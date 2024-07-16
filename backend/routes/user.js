@@ -14,7 +14,6 @@ router.post('/', async (req, res) => {
 });
 
 // Get all users
-
 router.get('/', async (req, res) => {
     try {
         const users = await User.find();
@@ -38,4 +37,16 @@ router.post('/:userId', async (req, res) => {
 });
 
 // Update a user by Id
+router.put('/:userId', async (req, res) => {
+    try{
+        const user = await User.findByIdAndUpdate(req.params.userId, req.body, { new:true, runValidators:true});
+        if(!user) {
+            return res.status(404).send({message: "User not found"});
+        }
+        res.send(user);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+});
+
 module.exports = router;
