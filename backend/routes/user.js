@@ -50,7 +50,7 @@ router.put('/:userId', async (req, res) => {
 });
 
 // Delete a user by Id
-router.put('/:userId', async (req, res) => {
+router.delete('/:userId', async (req, res) => {
     try{
         const user = await User.findByIdAndDelete(req.params.userId);
         if(!user) {

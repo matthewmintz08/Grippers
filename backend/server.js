@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
+const gymRoutes = require('./routes/gym');
 require('dotenv').config();
 
 const app = express();
@@ -19,6 +20,7 @@ mongoose.connect(process.env.MONGO_URL, {
 
 // Routes
 app.use('/user', userRoutes)
+app.use('/gym', gymRoutes)
 
 app.listen(PORT, () => {
     console.log('server is running on port ${PORT}');
