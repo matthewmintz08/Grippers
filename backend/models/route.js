@@ -6,8 +6,6 @@ const routeSchema = new mongoose.Schema({
     photo: { type: String, required: true},
     rating: { type: String, required: true},
     wall : { type: String, required: true},
-    completed: { type: Boolean, required: true},
-    addedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
     climbedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
 });
 
